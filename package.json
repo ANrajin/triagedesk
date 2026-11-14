@@ -1,0 +1,28 @@
+{
+  "name": "triagedesk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "fetch": "tsx src/fetchIssues.ts",
+    "profile": "tsx src/profile.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ANrajin/triagedesk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ANrajin/triagedesk/issues"
+  },
+  "homepage": "https://github.com/ANrajin/triagedesk#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "type": "module"
+}

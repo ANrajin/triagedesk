@@ -1,0 +1,1 @@
+export type FetchState = { nextUrl: string | null; done: boolean };

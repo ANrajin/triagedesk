@@ -1,5 +1,6 @@
 import type { FetchState } from "./fetchState.ts";
 import type { Issue } from "./Issue.ts";
+import type { RawIssue } from "./RawIssue.ts";
 import { appendFile, mkdir, readFile, rename, writeFile } from "node:fs/promises";
 
 const ISSUES_FILE = "data/issues.jsonl";
@@ -75,15 +76,13 @@ async function fetchWithRetry(url: string): Promise<Response> {
     throw new Error("unreachable");
 }
 
-function toIssue(raw: Record<string, any>): Issue {
+function toIssue(raw: RawIssue): Issue {
     return {
         number: raw.number,
         html_url: raw.html_url,
         title: raw.title,
         body: raw.body ?? null,
-        labels: (raw.labels ?? []).map((l: string | { name: string }) =>
-            typeof l === "string" ? l : l.name,
-        ),
+        labels: (raw.labels ?? []).map((l) => (typeof l === "string" ? l : l.name)),
         state_reason: raw.state_reason ?? null,
         created_at: raw.created_at,
         closed_at: raw.closed_at ?? null,
@@ -107,7 +106,7 @@ async function loadExisting(): Promise<Set<number>> {
 
     for (const line of lines) {
         try {
-            seen.add(JSON.parse(line).number);
+            seen.add((JSON.parse(line) as Pick<Issue, "number">).number);
             good.push(line);
         } catch {
             console.log("dropping corrupt line (crash during a previous write)");
@@ -160,7 +159,7 @@ let duplicates = 0;
 
 while (url) {
     const res = await fetchWithRetry(url);
-    const items = (await res.json()) as Array<Record<string, any>>;
+    const items = (await res.json()) as Array<RawIssue>;
 
     const nonPrs = items.filter((item) => !("pull_request" in item));
     const fresh = nonPrs.filter((item) => !seen.has(item.number));

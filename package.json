@@ -9,7 +9,8 @@
     "profile": "tsx src/github/profile.ts",
     "sample": "tsx src/github/sampleGold.ts",
     "label": "tsx src/eval/label.ts",
-    "validate-gold": "tsx src/eval/validateGold.ts"
+    "validate-gold": "tsx src/eval/validateGold.ts",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,13 @@
   },
   "homepage": "https://github.com/ANrajin/triagedesk#readme",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^26.6.6",
     "ajv": "^8.20.0",
+    "eslint": "^10.15.0",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "~6.0",
+    "typescript-eslint": "^8.72.2"
   },
   "type": "module"
 }

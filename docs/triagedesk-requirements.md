@@ -1,8 +1,10 @@
-# TriageDesk: Requirements (v0.2)
+# TriageDesk: Requirements (v1.0)
 
 Practice project for hands-on experience after the Claude Certified Architect Foundations exam. Stack: TypeScript, Claude Agent SDK, MCP, GitHub Actions.
 
-## Problem statement (DRAFT, pending owner confirmation)
+Status: approved by the owner on 2026-11-15. Changes after this point are tracked as new versions.
+
+## Problem statement
 Maintainers of an active open-source project receive a steady stream of issues and pull requests. Much of the effort goes into repetitive work rather than decisions:
 - Issues arrive in inconsistent quality: some lack reproduction steps, versions, or the structure the issue template asks for, so a maintainer must ask follow-up questions before work can begin.
 - Issues must be classified (type, severity, component) before they can be prioritized or routed. This is slow, and different people classify the same issue differently.
@@ -56,8 +58,12 @@ Build a system named TriageDesk that triages issues, answers repo questions, and
 4. PR review in CI (F3)
 5. Dashboard and Claude Code setup (F5, F6)
 
-## Open items
-- Owner to confirm or edit the problem statement above.
+## Open items (do not block v1.0)
 - Confirm the exact upstream issue and PR counts on GitHub.
-- Choose the model and set cost and latency numbers after the baseline run.
+- Choose the model and set cost and latency numbers after the Phase 2 baseline run.
 - Check that the name TriageDesk is free on GitHub and npm.
+
+## Version history
+- v1.0 (2026-11-15): problem statement approved, draft label removed.
+- v0.2 (2026-11-14): renamed to TriageDesk, added problem statement, rationale, and non-goals.
+- v0.1 (2026-11-14): first draft.

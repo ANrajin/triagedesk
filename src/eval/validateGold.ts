@@ -22,7 +22,7 @@ for (const entry of entries) {
     if (validate({ type, severity, component, missing_info })) {
         valid++;
     } else {
-        console.log(`#${entry.number} invalid:`, validate.errors);
+        console.log(`#${entry.number} invalid: ${ajv.errorsText(validate.errors)}`);
         process.exitCode = 1;
     }
 }

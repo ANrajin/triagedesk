@@ -9,7 +9,7 @@ Used for `data/gold.jsonl`. Label the first 30 issues of `data/gold-sample.jsonl
 | `type` | `bug`, `feature`, `refactoring`, `discussion`, `other`, `unclear` |
 | `severity` | `critical`, `high`, `medium`, `low`, or `null` |
 | `component` | one value from the list below, or `null` |
-| `missing_info` | list of strings, e.g. `["steps to reproduce", "version"]`; empty list if nothing is missing |
+| `missing_info` | list of values from the Missing info vocabulary below (no free text); empty list if nothing is missing |
 | `notes` | optional free text |
 | `blind` | `true` for the first 30 |
 
@@ -47,3 +47,18 @@ Words are hints from issue titles, not rules.
 - Never infer severity or component from the issue's age or from the maintainers' labels.
 - When two components fit, pick the one where the fix would go, and note the other in `notes`.
 - Write the labels yourself; the definitions are a starting point and you may change them. Record any change here with a date.
+
+## Missing info vocabulary (added 2026-11-15)
+`missing_info` takes only these values, so labels can be compared as sets. Extra detail goes in `notes`.
+| Value | Meaning |
+|---|---|
+| `description` | no or too little explanatory text |
+| `problem_statement` | no stated problem or justification (the why) |
+| `expected_behavior` | does not say what should happen |
+| `steps_to_reproduce` | bug with no steps |
+| `version_or_environment` | no nopCommerce version, database or hosting details |
+| `logs_or_screenshots` | an error or UI problem described with no evidence |
+
+Only list what the issue needs. A feature request is not missing `steps_to_reproduce`; use `[]` when nothing needed is missing.
+
+The 9 existing gold entries with free text were remapped to this vocabulary on 2026-11-15; the original wording is kept in each entry's `notes`. This was a mechanical normalization of the author's own text, so `blind` is unchanged.

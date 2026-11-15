@@ -6,7 +6,9 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "fetch": "tsx --env-file=.env src/github/fetchIssues.ts",
-    "profile": "tsx src/profile.ts"
+    "profile": "tsx src/github/profile.ts",
+    "sample": "tsx src/github/sampleGold.ts",
+    "label": "tsx src/eval/label.ts"
   },
   "repository": {
     "type": "git",

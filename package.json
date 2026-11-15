@@ -8,7 +8,8 @@
     "fetch": "tsx --env-file=.env src/github/fetchIssues.ts",
     "profile": "tsx src/github/profile.ts",
     "sample": "tsx src/github/sampleGold.ts",
-    "label": "tsx src/eval/label.ts"
+    "label": "tsx src/eval/label.ts",
+    "validate-gold": "tsx src/eval/validateGold.ts"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/ANrajin/triagedesk#readme",
   "devDependencies": {
     "@types/node": "^26.6.6",
+    "ajv": "^8.20.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   },

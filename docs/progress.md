@@ -1,7 +1,7 @@
 # TriageDesk Progress
 
 ## Current position
-Phase 1 complete pending commit approval. Next: Phase 2.1 (schema design).
+Phase 1 complete (ea85b47). Phase 2.1 complete: schema in `src/triage/schema.ts`, gold validated 30/30 via `npm run validate-gold`. Next: 2.2 extraction via `tool_use` with forced `tool_choice` (needs API key in `.env` and a spend limit).
 
 ## Done
 - 2026-11-14: 1.1 setup verified (scaffold, `.env`, `.env.example`, ignore rules).
@@ -20,3 +20,5 @@ Phase 1 complete pending commit approval. Next: Phase 2.1 (schema design).
 - Storage: JSON/JSONL. Upstream is read-only; writes only to the sandbox repo.
 - Gold set `gold.jsonl` is committed (numbers and labels only); `issues.jsonl` stays out of git.
 - Blind-label integrity: #8123 was edited after first labeling (severity medium -> null, note "probably a bug"). User confirmed 2026-11-15 the edit was made without seeing any Claude output, but it came after seeing the maintainer label. Resolution: `blind` set to false for #8123 in `gold.jsonl`; exclude it from the blind-accuracy comparison (29 blind, 1 non-blind).
+- 2026-11-15: Triage schema (2.1): `type`, `severity`, `component`, `missing_info`, all required. `component` keeps both `other` (clear, not in list) and `null` (cannot tell), no free-text detail field. No per-field confidence until task 2.7.
+- 2026-11-15: 2.1 done. `ajv` added as dev dependency; `GoldEntry` type replaces untyped `JSON.parse`. Policy: no explicit `any`. `strict` in tsconfig already bans implicit `any`, but tsconfig cannot ban explicit `any` or `any` returned by the stdlib (`JSON.parse`); enforcing that needs ESLint (`@typescript-eslint/no-explicit-any`, `no-unsafe-assignment`). Open: add ESLint?

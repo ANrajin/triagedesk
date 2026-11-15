@@ -43,7 +43,7 @@ Words are hints from issue titles, not rules.
 - `other`: clear but none of the above
 
 ## Rules
-- If the issue has no body or a tiny one, label what the title supports. Use `unclear` / `null` for the rest and list what is missing in `missing_info`.
+- If the issue has no body or a tiny one, label what the title supports. Use `unclear` / `null` for the rest and list what is missing in `missing_info`. (Confirmed 2026-11-15; `profile-notes.md` Section 3 aligned. Example: #8235 has an empty body, but the title supports `bug`.)
 - Never infer severity or component from the issue's age or from the maintainers' labels.
 - When two components fit, pick the one where the fix would go, and note the other in `notes`.
 - Write the labels yourself; the definitions are a starting point and you may change them. Record any change here with a date.

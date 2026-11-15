@@ -8,7 +8,7 @@ Phase 1 complete pending commit approval. Next: Phase 2.1 (schema design).
 - 2026-11-14: 1.2 fetch script (`src/github/fetchIssues.ts`, resumable via `data/fetch-state.json`). `data/issues.jsonl`: 6,959 closed issues, unique, no PRs.
 - 2026-11-14: 1.3 profile script (`src/github/profile.ts`) runs. Notes file still to write.
 - 2026-11-15: 1.4 gold set: `data/gold.jsonl` has 30 blind labels, schema-valid, all numbers exist in issues.jsonl. `docs/labeling-guide.md` written. Frozen copy: `data/gold-blind-30.jsonl`. `data/gold-sample.jsonl` holds the 100-issue sample.
-- 2026-11-15: 1.3 notes written and reviewed by user: `docs/profile-notes.md`. Decisions: label mapping, score type only on single mappable-label issues from 2022 onward (1,194 issues), empty/tiny bodies -> `unclear`/null.
+- 2026-11-15: 1.3 notes written and reviewed by user: `docs/profile-notes.md`. Decisions: label mapping, score type only on single mappable-label issues from 2022 onward (1,194 issues), empty/tiny bodies -> label what the title supports, `unclear`/null only for the rest (guide's rule, confirmed 2026-11-15).
 - 2026-11-15: `.gitignore` changed to `data/*` + `!data/gold.jsonl`. Stale `gold.jsonl.bak` deleted at user's request.
 
 ## Open questions
@@ -19,4 +19,4 @@ Phase 1 complete pending commit approval. Next: Phase 2.1 (schema design).
 - Issue fields: number, html_url, title, body (nullable), labels (names), state_reason, created_at, closed_at, author_association, comments (count). No comment text until Phase 3.
 - Storage: JSON/JSONL. Upstream is read-only; writes only to the sandbox repo.
 - Gold set `gold.jsonl` is committed (numbers and labels only); `issues.jsonl` stays out of git.
-- Blind-label integrity: #8123 was edited after first labeling (severity medium -> null, note "probably a bug"). User confirmed 2026-11-15 the edit was made without seeing any Claude output.
+- Blind-label integrity: #8123 was edited after first labeling (severity medium -> null, note "probably a bug"). User confirmed 2026-11-15 the edit was made without seeing any Claude output, but it came after seeing the maintainer label. Resolution: `blind` set to false for #8123 in `gold.jsonl`; exclude it from the blind-accuracy comparison (29 blind, 1 non-blind).

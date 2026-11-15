@@ -40,7 +40,7 @@ Source: `data/issues.jsonl`, closed upstream issues, fetched 2026-11-14. Numbers
 | Tiny body (under 40 chars) | 127 |
 | Follows bug template (2+ headings) | 240 |
 
-**Decision:** for empty or tiny bodies Claude returns `unclear` and `null` and never guesses; the missing parts go into `missing_info`.
+**Decision (2026-11-15, follows `labeling-guide.md`):** for empty or tiny bodies, label what the title supports. Use `unclear` / `null` only for fields the title cannot support, and list what is missing in `missing_info`. Example: #8235 has an empty body, but its title ("missing add button") supports `bug`, so it is labeled `bug` with severity `null` and the missing parts in `missing_info`.
 
 ## 4. Trend by year
 Old issues are poorly labeled: 2016 has 1,779 issues, of which 752 are unlabeled and only 2 follow the template.
@@ -72,3 +72,4 @@ Old issues are poorly labeled: 2016 has 1,779 issues, of which 752 are unlabeled
 - **Metrics:** report separately the unlabeled, multi-label and on-hold-only issues, and always give counts with percentages.
 - **Blind labels:** #8123's later view (`bug`) was formed after seeing the maintainer label, so it is not blind. `gold.jsonl` keeps the blind label. Any post-hoc view goes in a separate field or in these notes, never over a blind label.
 - **Risks:** maintainer labels are noisy, and 30 blind labels is a small set.
+- **Sampling:** the 100-issue sample is stratified, so results should be reported per stratum and not extrapolated.

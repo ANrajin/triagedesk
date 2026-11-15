@@ -12,7 +12,7 @@
 {"number":6515,"type":"feature","severity":null,"component":"plugins","missing_info":[],"notes":"The title is not clear enough","blind":true}
 {"number":7065,"type":"feature","severity":null,"component":"other","missing_info":[],"notes":"","blind":true}
 {"number":6571,"type":"bug","severity":"medium","component":"core-platform","missing_info":["expected behevior"],"notes":"","blind":true}
-{"number":8123,"type":"unclear","severity":null,"component":"admin-ui","missing_info":["Description","only images are there but proper explaination is missing"],"notes":"probably a bug","blind":true}
+{"number":8123,"type":"unclear","severity":null,"component":"admin-ui","missing_info":["Description","only images are there but proper explaination is missing"],"notes":"probably a bug","blind":false}
 {"number":7215,"type":"refactoring","severity":null,"component":"catalog","missing_info":[],"notes":"","blind":true}
 {"number":7145,"type":"unclear","severity":null,"component":"core-platform","missing_info":["clear description","what happend","what broken","why broken","what business problem arises"],"notes":"","blind":true}
 {"number":7271,"type":"bug","severity":"high","component":"cart-checkout","missing_info":[],"notes":"","blind":true}
